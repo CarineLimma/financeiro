@@ -1,0 +1,98 @@
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal usa flex do Bootstrap */
+
+.card-box {
+    background-color: #0e0101;
+    padding: 2.5rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 420px;
+    animation: fadeSlideDown 0.5s ease-out;
+    transition: all 0.3s ease-in-out;
+}
+
+@keyframes fadeSlideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-box h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #212529;
+}
+
+.card-box .form-label {
+    font-weight: 500;
+}
+
+.card-box .form-control {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+}
+
+.card-box .btn-primary {
+    background-color: #007bff;
+    border: none;
+    font-weight: 500;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+.card-box .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.card-box a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.card-box a:hover {
+    text-decoration: underline;
+}
+
+.alert {
+    font-size: 0.95rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 576px) {
+    .card-box {
+        padding: 2rem 1.2rem;
+        margin: 1rem;
+    }
+
+    .card-box h3 {
+        font-size: 1.5rem;
+    }
+
+    .card-box .form-control {
+        font-size: 0.95rem;
+        padding: 0.65rem;
+    }
+
+    .card-box .btn-primary {
+        font-size: 0.95rem;
+        padding: 0.65rem;
+    }
+}
