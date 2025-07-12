@@ -11,7 +11,7 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = os.getenv('FLASK_SECRET_KEY')
+app.secret_key = os.getenv('FLASK_SECRET_KEY', 'chave_padrao_secreta')
 
 app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER', 'smtp.gmail.com')
 app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT', 465))
@@ -58,6 +58,36 @@ def login_required(f):
 def index():
     return redirect(url_for('login'))
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        nome = request.form['nome']
+        email = request.form['email']
+        senha = request.form['senha']
+
+        if not nome or not email or not senha:
+            flash('Por favor, preencha todos os campos.', 'danger')
+            return redirect(url_for('register'))
+
+        with sqlite3.connect('database.db') as conn:
+            cursor = conn.cursor()
+            cursor.execute('SELECT * FROM usuarios WHERE email = ?', (email,))
+            usuario_existente = cursor.fetchone()
+
+            if usuario_existente:
+                flash('E-mail já cadastrado. Faça login ou use outro e-mail.', 'warning')
+                return redirect(url_for('register'))
+
+            senha_criptografada = generate_password_hash(senha)
+            cursor.execute('INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)',
+                           (nome, email, senha_criptografada))
+            conn.commit()
+
+        flash('Cadastro realizado com sucesso. Faça login.', 'success')
+        return redirect(url_for('login'))
+
+    return render_template('register.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -82,40 +112,7 @@ def login():
 @login_required
 def dashboard():
     usuario_id = session['usuario_id']
-
-    with sqlite3.connect('database.db') as conn:
-        cursor = conn.cursor()
-        # Buscar nome do usuário
-        cursor.execute("SELECT nome FROM usuarios WHERE id = ?", (usuario_id,))
-        nome = cursor.fetchone()[0]
-
-        # Buscar total de receitas
-        cursor.execute("SELECT IFNULL(SUM(valor), 0) FROM transacoes WHERE usuario_id = ? AND tipo = 'receita'", (usuario_id,))
-        total_receitas = cursor.fetchone()[0]
-
-        # Buscar total de despesas
-        cursor.execute("SELECT IFNULL(SUM(valor), 0) FROM transacoes WHERE usuario_id = ? AND tipo = 'despesa'", (usuario_id,))
-        total_despesas = cursor.fetchone()[0]
-
-        # Buscar categorias e valores das despesas (exemplo simples)
-        cursor.execute("""
-            SELECT categoria, SUM(valor) FROM transacoes
-            WHERE usuario_id = ? AND tipo = 'despesa'
-            GROUP BY categoria
-        """, (usuario_id,))
-        resultados = cursor.fetchall()
-
-        labels_categorias = [r[0] for r in resultados]
-        valores_categorias = [r[1] for r in resultados]
-
-    return render_template(
-        'dashboard.html',
-        nome=nome,
-        total_receitas=total_receitas,
-        total_despesas=total_despesas,
-        labels_categorias=labels_categorias,
-        valores_categorias=valores_categorias
-    )
+    return f"Bem-vindo ao dashboard, usuário {usuario_id}!"
 
 @app.route('/logout')
 @login_required
@@ -124,7 +121,6 @@ def logout():
     flash("Logout realizado com sucesso.", "success")
     return redirect(url_for('login'))
 
-# Rota para enviar e-mail de recuperação de senha
 @app.route('/esqueci-senha', methods=['GET', 'POST'])
 def forgot_password():
     if request.method == 'POST':
@@ -157,7 +153,6 @@ def forgot_password():
 
     return render_template('esqueci_senha.html')
 
-# Rota para redefinir a senha usando o token
 @app.route('/redefinir-senha/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     try:
@@ -190,36 +185,6 @@ def reset_password(token):
         return redirect(url_for('login'))
 
     return render_template('redefinir_senha.html')
-
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        nome = request.form['nome']
-        email = request.form['email']
-        senha = request.form['senha']
-
-        if not nome or not email or not senha:
-            flash('Por favor, preencha todos os campos.', 'danger')
-            return redirect(url_for('register'))
-
-        with sqlite3.connect('database.db') as conn:
-            cursor = conn.cursor()
-            cursor.execute('SELECT * FROM usuarios WHERE email = ?', (email,))
-            usuario_existente = cursor.fetchone()
-
-            if usuario_existente:
-                flash('E-mail já cadastrado. Faça login ou use outro e-mail.', 'warning')
-                return redirect(url_for('register'))
-
-            senha_criptografada = generate_password_hash(senha)
-            cursor.execute('INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)',
-                           (nome, email, senha_criptografada))
-            conn.commit()
-
-        flash('Cadastro realizado com sucesso. Faça login.', 'success')
-        return redirect(url_for('login'))
-
-    return render_template('register.html')
 
 if __name__ == '__main__':
     init_db()
