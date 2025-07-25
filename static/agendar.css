@@ -1,0 +1,91 @@
+/* Container principal do formulário */
+.agendar-container {
+  max-width: 450px;
+  margin: 2rem auto;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #34495E;
+}
+
+/* Título do formulário */
+.agendar-container h3 {
+  text-align: center;
+  font-weight: 700;
+  color: #2C3E50;
+  margin-bottom: 1.5rem;
+}
+
+/* Labels dos campos */
+.agendar-container label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+/* Inputs e selects */
+.agendar-container input,
+.agendar-container select {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+  margin-bottom: 1.25rem;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #34495E;
+  transition: border-color 0.25s ease;
+}
+
+/* Foco nos inputs e selects */
+.agendar-container input:focus,
+.agendar-container select:focus {
+  border-color: #4a90e2; /* Azul padrão */
+  outline: none;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+/* Botão de enviar */
+.agendar-container button {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  background-color: #4a90e2; /* Azul padrão */
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+/* Hover no botão */
+.agendar-container button:hover {
+  background-color: #357ABD;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 480px) {
+  .agendar-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .agendar-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .agendar-container input,
+  .agendar-container select {
+    font-size: 0.95rem;
+    padding: 0.45rem 0.7rem;
+    margin-bottom: 1rem;
+  }
+
+  .agendar-container button {
+    font-size: 0.95rem;
+    padding: 0.55rem 1rem;
+  }
+}

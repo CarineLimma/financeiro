@@ -1,0 +1,206 @@
+body{
+     background-color: #f5f7fA;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     color:#34495E;
+     margin: 0;
+     padding: 0;
+     overflow-x: auto;
+}
+.menu-top{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12), 0 4 px 16px rgba(44, 62, 80, 0.08);
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  z-index:1000;
+  border-radius: 0 0 16px 16px;
+  flex-wrap: wrap;
+  
+}
+.menu-top .btn{
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+  transition: all 0.3s ease;
+}
+.menu-top .btn:hover{
+  transform: translateY(-2px);
+}
+.content-wrapper{
+  padding-top:100px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left:1rem;
+  padding-right:1rem;
+}
+.container-transacoes{
+  background-color:#fff;
+  border-radius: 16px;
+  padding:2rem;
+  box-shadow: 0 4 px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+.container-transacoes h3 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #2C3E50;
+}
+
+.container-transacoes p {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+
+.table-container {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  min-width: 600px;
+}
+
+.table thead {
+  background-color: #34495E;
+  color: #fff;
+}
+
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  white-space: nowrap; /* evita quebra */
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f7f9fc;
+}
+
+.table tbody tr:hover {
+  background-color: #ecf0f3;
+}
+
+
+.receita {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.despesa {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .menu-top {
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .menu-top .btn {
+    flex: 1 1 45%;
+    font-size: 0.95rem;
+  }
+
+  .container-transacoes {
+    padding: 1.5rem;
+  }
+
+  .table {
+    font-size: 0.9rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.8rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .menu-top .btn {
+    flex: 1 1 100%;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .container-transacoes h3 {
+    font-size: 1.4rem;
+  }
+
+  .table {
+    font-size: 0.85rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.6rem;
+  }
+}.export-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap; /* para responsividade */
+}
+
+.export-buttons .btn {
+  padding: 0.5rem 1.3rem;
+  font-weight: 600;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.export-buttons .btn-danger {
+  background-color: #dc3545;
+  border: none;
+  color: #fff;
+}
+
+.export-buttons .btn-danger:hover,
+.export-buttons .btn-danger:focus {
+  background-color: #b02a37;
+  box-shadow: 0 4px 8px rgba(176, 42, 55, 0.6);
+}
+
+.export-buttons .btn-success {
+  background-color: #28a745;
+  border: none;
+  color: #fff;
+}
+
+.export-buttons .btn-success:hover,
+.export-buttons .btn-success:focus {
+  background-color: #1e7e34;
+  box-shadow: 0 4px 8px rgba(30, 126, 52, 0.6);
+}
+
+/* Para melhorar a responsividade em telas pequenas */
+@media (max-width: 480px) {
+  .export-buttons {
+    flex-direction: column;
+  }
+  .export-buttons .btn {
+    width: 100%;
+  }
+}
