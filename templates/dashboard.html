@@ -15,23 +15,14 @@
   <div id="dashboard" class="container mt-5">
     <h2 class="mb-4 text-center">Seu Painel de Controle Financeiro</h2> 
 
-    <!-- Menu de ações -->
-    <div class="row g-4 justify-content-center mb-4">
-      <div class="col-12 col-md-3">
-        <a href="{{ url_for('adicionar_despesa') }}" class="btn btn-danger w-100 p-4">Despesa</a>
-      </div>
-      <div class="col-12 col-md-3">
-        <a href="{{ url_for('adicionar_receita') }}" class="btn btn-success w-100 p-4">Receita</a>
-      </div>
-      <div class="col-12 col-md-3">
-        <a href="{{ url_for('historico') }}" class="btn btn-primary w-100 p-4">Histórico</a>
-      </div>
-      <div class="col-12 col-md-3">
-        <a href="{{ url_for('agendar_transacao') }}" class="btn btn-warning w-100 p-4">Agendar Transações</a>
-      </div>
-      <div class="col-12 col-md-3">
-        <a href="{{ url_for('logout') }}" class="btn btn-dark w-100 p-4">Sair</a>
-      </div>
+  <!-- Navbar -->
+  <div class="dashboard-menu mb-4">
+    <a href="{{ url_for('dashboard') }}" class="menu-btn active">Dashboard</a>
+    <a href="{{ url_for('adicionar_receita') }}" class="menu-btn">Receita</a>
+    <a href="{{ url_for('adicionar_despesa') }}" class="menu-btn">Despesa</a>
+    <a href="{{ url_for('historico') }}" class="menu-btn">Histórico</a>
+    <a href="{{ url_for('login') }}" class="menu-btn">Login</a>
+  </div>
     </div>
 
     <!-- Cards dos gráficos -->
@@ -40,7 +31,7 @@
       <div class="col-12 col-md-6">
         <div class="card">
           <h3>Receita</h3>
-          <p class="card-saldo">R$ 3.500,00</p>
+          <p class="card-saldo"></p>
           <canvas id="receita-chart"></canvas>
         </div>
       </div>
@@ -49,7 +40,7 @@
       <div class="col-12 col-md-6">
         <div class="card">
           <h3>Despesa</h3>
-          <p class="card-saldo">R$ 2.000,00</p>
+          <p class="card-saldo"></p>
           <canvas id="despesa-chart"></canvas>
         </div>
       </div>
