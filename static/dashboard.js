@@ -17,6 +17,19 @@ const despesaData = {
     }]
 };
 
+// Função para calcular total
+function calcularTotal(dados) {
+    return dados.datasets[0].data.reduce((a, b) => a + b, 0);
+}
+
+// Atualiza o saldo nos cards
+document.querySelector('.card-saldo').textContent = `R$ ${calcularTotal(receitaData)}`;
+
+// Se tiver mais de um card-saldo, atualizamos manualmente
+const saldoCards = document.querySelectorAll('.card-saldo');
+saldoCards[0].textContent = `R$ ${calcularTotal(receitaData)}`; // Receita
+saldoCards[1].textContent = `R$ ${calcularTotal(despesaData)}`; // Despesa
+
 // Configurações dos gráficos
 const configReceita = {
     type: 'bar',
