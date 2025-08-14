@@ -1,5 +1,5 @@
-/* ======================== 
-   Reset básico e fonte
+/* ========================  
+   Reset básico e fonte   
 ======================== */
 * {
     box-sizing: border-box;
@@ -17,17 +17,20 @@ body {
    Navbar topo
 ======================== */
 .dashboard-menu {
-    width: 100%;
+    width: auto; /* largura ajusta ao conteúdo */
+    max-width: 500px; /* largura máxima reduzida */
     background-color: #5b2be0;
     display: flex;
     justify-content: center; /* centraliza os botões */
-    padding: 15px 0;
-    gap: 20px;
+    padding: 10px 0; /* reduz padding vertical */
+    gap: 15px; /* reduz espaço entre os botões */
     flex-wrap: wrap;
+    border-radius: 12px; /* opcional: cantos arredondados */
+    margin-bottom: 15px; /* reduz espaço entre menu e gráficos */
 }
 
 .dashboard-menu .menu-btn {
-    padding: 10px 20px;
+    padding: 8px 16px; /* reduz tamanho dos botões */
     border-radius: 12px;
     background-color: #6c5ce7;
     color: #fff;
@@ -54,8 +57,8 @@ body {
     flex-direction: column;
     align-items: center; /* centraliza horizontalmente */
     min-height: 100vh;
-    padding: 20px;
-    gap: 20px;
+    padding: 10px 20px; /* reduz padding geral */
+    gap: 15px; /* reduz espaço entre menu e cards */
 }
 
 /* ========================
@@ -69,7 +72,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 90%;
-    max-width: 600px; /* limita largura */
+    max-width: 500px; /* reduz largura máxima do card */
     height: 300px;
 }
 
@@ -103,16 +106,18 @@ body {
 ======================== */
 @media (max-width: 768px) {
     .dashboard-menu {
+        max-width: 100%; /* menu ocupa toda largura em telas pequenas */
+        padding: 8px 0;
         gap: 10px;
-        padding: 10px 0;
     }
 
     .dashboard-menu .menu-btn {
-        padding: 8px 12px;
+        padding: 6px 12px;
         font-size: 0.9rem;
     }
 
     .card {
+        width: 95%;
         height: 250px;
         padding: 15px;
     }
