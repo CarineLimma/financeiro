@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, send_file
 from flask_mail import Mail, Message
 from werkzeug.security import generate_password_hash, check_password_hash
-from itsdangerous import URLSafeTimedSerializer
+from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadSignature
 from functools import wraps
 from dotenv import load_dotenv
 import sqlite3
@@ -460,6 +460,7 @@ def redefinir_senha(token):
     except BadSignature:
         flash("Link inválido.", "danger")
         return redirect(url_for('esqueci_senha'))
+
 
     if request.method == 'POST':
         senha = request.form.get('senha')
