@@ -1,0 +1,104 @@
+/* Container principal do dashboard */
+.dashboard-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* Card do menu */
+.card-box {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 30px 20px;
+    flex: 1 1 200px; /* Flexível, mínimo 200px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Efeito hover no card */
+.card-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Conteúdo interno do card */
+.card-content h3 {
+    font-size: 18px;
+    color: #5b2be0;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Balance / valores do dashboard (se houver) */
+.balance {
+    font-size: 16px;
+    font-weight: bold;
+    color: #00c6ff;
+}
+
+/* Gráfico ocupa todo espaço disponível abaixo do cabeçalho */
+canvas {
+    width: 100% !important;
+    height: 250px !important;
+}
+
+/* RESPONSIVIDADE */
+
+/* Grandes telas */
+@media (min-width: 1200px) {
+    .dashboard-container {
+        flex-wrap: nowrap;
+    }
+}
+
+/* Médias telas (tablet) */
+@media (max-width: 992px) {
+    .card-box {
+        flex: 1 1 180px;
+        padding: 25px 15px;
+    }
+}
+
+/* Pequenas telas (celular) */
+@media (max-width: 768px) {
+    .dashboard-container {
+        gap: 15px;
+    }
+    .card-box {
+        flex: 1 1 140px;
+        padding: 20px 10px;
+    }
+    .card-content h3 {
+        font-size: 16px;
+    }
+    canvas {
+        height: 200px !important;
+    }
+}
+
+/* Telas muito pequenas */
+@media (max-width: 500px) {
+    .card-box {
+        flex: 1 1 120px;
+        padding: 15px 8px;
+    }
+    .card-content h3 {
+        font-size: 14px;
+    }
+    .balance {
+        font-size: 14px;
+    }
+    canvas {
+        height: 180px !important;
+    }
+}

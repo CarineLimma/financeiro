@@ -1,0 +1,172 @@
+/* =====================
+   RESET & BASE
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #5b2be0, #00c6ff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* =====================
+   GRÁFICO DE BARRAS NO FUNDO
+===================== */
+.bg-bars {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 0;
+    display: flex;
+    justify-content: space-around; /* espaçamento automático */
+    padding: 0 5%; /* ajuste relativo */
+    opacity: 0.15;
+}
+
+.bar {
+    width: 5%; /* largura relativa */
+    background: white;
+    border-radius: 10px;
+    animation: grow 2s infinite ease-in-out alternate;
+}
+
+/* Alturas relativas das barras (em % da tela) */
+.bar:nth-child(1) { height: 30vh; animation-delay: 0s; }
+.bar:nth-child(2) { height: 50vh; animation-delay: 0.2s; }
+.bar:nth-child(3) { height: 40vh; animation-delay: 0.4s; }
+.bar:nth-child(4) { height: 60vh; animation-delay: 0.6s; }
+.bar:nth-child(5) { height: 45vh; animation-delay: 0.8s; }
+
+@keyframes grow {
+    from { transform: scaleY(0.8); }
+    to { transform: scaleY(1.2); }
+}
+
+/* =====================
+   CARD DE AUTENTICAÇÃO
+===================== */
+.auth-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    z-index: 1;
+    position: relative;
+    transition: 0.3s;
+}
+
+.auth-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.auth-card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #5b2be0;
+    font-weight: bold;
+}
+
+/* Inputs */
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.auth-card input:focus {
+    outline: none;
+    border-color: #5b2be0;
+    box-shadow: 0 0 5px rgba(91, 43, 224, 0.4);
+}
+
+/* Botão */
+.auth-card button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #5b2be0, #00c6ff);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-card button:hover {
+    opacity: 0.9;
+}
+
+/* Links */
+.auth-card a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #5b2be0;
+    text-decoration: none;
+}
+
+.auth-card a:hover {
+    text-decoration: underline;
+}
+
+/* =====================
+   RESPONSIVIDADE
+===================== */
+@media (max-width: 500px) {
+    .bg-bars {
+        padding: 0 3%;
+    }
+
+    .bar {
+        width: 8%; /* barras maiores em mobile */
+    }
+
+    .auth-card {
+        padding: 25px;
+        margin: 0 10px;
+    }
+
+    .auth-card h2 {
+        font-size: 20px;
+    }
+
+    .auth-card input, 
+    .auth-card button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 350px) {
+    .bar {
+        width: 10%;
+    }
+
+    .auth-card h2 {
+        font-size: 18px;
+    }
+
+    .auth-card input, 
+    .auth-card button {
+        font-size: 13px;
+        padding: 8px;
+    }
+}
