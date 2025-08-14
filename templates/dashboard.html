@@ -12,38 +12,39 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
 </head>
 <body>
-  <div id="dashboard" class="container mt-5">
+  <div id="dashboard" class="container mt-4">
     <h2 class="mb-4 text-center">Seu Painel de Controle Financeiro</h2> 
 
-  <!-- Navbar -->
-  <div class="dashboard-menu mb-4">
-    <a href="{{ url_for('dashboard') }}" class="menu-btn active">Dashboard</a>
-    <a href="{{ url_for('adicionar_receita') }}" class="menu-btn">Receita</a>
-    <a href="{{ url_for('adicionar_despesa') }}" class="menu-btn">Despesa</a>
-    <a href="{{ url_for('historico') }}" class="menu-btn">Histórico</a>
-    <a href="{{ url_for('login') }}" class="menu-btn">Login</a>
-  </div>
+    <!-- Navbar -->
+    <div class="dashboard-menu">
+      <a href="{{ url_for('dashboard') }}" class="menu-btn active">Dashboard</a>
+      <a href="{{ url_for('adicionar_receita') }}" class="menu-btn">Receita</a>
+      <a href="{{ url_for('adicionar_despesa') }}" class="menu-btn">Despesa</a>
+      <a href="{{ url_for('historico') }}" class="menu-btn">Histórico</a>
+      <a href="{{ url_for('login') }}" class="menu-btn">Login</a>
     </div>
 
     <!-- Cards dos gráficos -->
-    <div class="row g-4 justify-content-center">
+    <div class="cards-container">
+      
       <!-- Card Receita -->
-      <div class="col-12 col-md-6">
-        <div class="card">
+      <div class="card">
+        <div class="card-header">
           <h3>Receita</h3>
-          <p class="card-saldo"></p>
-          <canvas id="receita-chart"></canvas>
+          <span class="saldo">R$ 3500</span>
         </div>
+        <canvas id="receita-chart"></canvas>
       </div>
 
       <!-- Card Despesa -->
-      <div class="col-12 col-md-6">
-        <div class="card">
+      <div class="card">
+        <div class="card-header">
           <h3>Despesa</h3>
-          <p class="card-saldo"></p>
-          <canvas id="despesa-chart"></canvas>
+          <span class="saldo">R$ 2000</span>
         </div>
+        <canvas id="despesa-chart"></canvas>
       </div>
+
     </div>
   </div>
 
