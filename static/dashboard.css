@@ -7,11 +7,12 @@
     margin: 0;
     padding: 0;
 }
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
+    background: linear-gradient(135deg, #5b2be0, #00c6ff);
+    min-height: 100vh; /* garante que cubra toda a altura */
+    display: flex;
+    flex-direction: column; /* para conteúdo empilhar verticalmente */
 }
 
 /* ========================
@@ -22,7 +23,7 @@ body {
     justify-content: center;
     gap: 8px;
     padding: 15px 0;
-    background-color: transparent; /* remove o fundo roxo */
+    background-color: rgba(235, 235, 241, 0.986); /* remove o fundo roxo */
     margin-bottom: 10px; /* reduz espaço antes dos gráficos */
     flex-wrap: wrap;
 }

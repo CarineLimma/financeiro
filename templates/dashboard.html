@@ -13,38 +13,44 @@
 </head>
 <body>
   <div id="dashboard" class="container mt-4">
-    <h2 class="mb-4 text-center">Seu Painel de Controle Financeiro</h2> 
+    <h2 class="mb-4 text-center">Painel de Controle Financeiro</h2> 
 
     <!-- Navbar -->
     <div class="dashboard-menu">
+
       <a href="{{ url_for('dashboard') }}" class="menu-btn active">Dashboard</a>
       <a href="{{ url_for('adicionar_receita') }}" class="menu-btn">Receita</a>
       <a href="{{ url_for('adicionar_despesa') }}" class="menu-btn">Despesa</a>
       <a href="{{ url_for('historico') }}" class="menu-btn">Histórico</a>
       <a href="{{ url_for('login') }}" class="menu-btn">Login</a>
+      <a href="{{ url_for('agendar_transacao') }}" class="menu-btn">Agendar</a>
     </div>
 
     <!-- Cards dos gráficos -->
-    <div class="cards-container">
-      
+    <div class="row g-4 mt-2">
       <!-- Card Receita -->
-      <div class="card">
-        <div class="card-header">
-          <h3>Receita</h3>
-          <span class="saldo">R$ 3500</span>
+      <div class="col-12 col-md-6">
+        <div class="card">
+          <div class="card-header">
+            📈 Receita
+          </div>
+          <div class="card-body" style="position: relative; height: 300px;">
+            <canvas id="receitaChart"></canvas>
+          </div>
         </div>
-        <canvas id="receita-chart"></canvas>
       </div>
 
       <!-- Card Despesa -->
-      <div class="card">
-        <div class="card-header">
-          <h3>Despesa</h3>
-          <span class="saldo">R$ 2000</span>
+      <div class="col-12 col-md-6">
+        <div class="card">
+          <div class="card-header">
+            📉 Despesa
+          </div>
+          <div class="card-body" style="position: relative; height: 300px;">
+            <canvas id="despesaChart"></canvas>
+          </div>
         </div>
-        <canvas id="despesa-chart"></canvas>
       </div>
-
     </div>
   </div>
 

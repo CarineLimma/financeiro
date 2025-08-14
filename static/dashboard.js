@@ -4,7 +4,7 @@ const receitaData = {
     datasets: [{
         label: 'Receita',
         data: [500, 700, 800, 600, 900],
-        backgroundColor: '#5b2be0'
+        backgroundColor: '#05036bff'
     }]
 };
 
@@ -13,7 +13,7 @@ const despesaData = {
     datasets: [{
         label: 'Despesa',
         data: [300, 400, 500, 350, 450],
-        backgroundColor: '#00c6ff'
+        backgroundColor: '#ff0000ff'
     }]
 };
 
