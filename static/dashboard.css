@@ -1,9 +1,5 @@
-
-/* ========================   
-   Reset básico e fonte   
-======================== */
-/* ========================   
-   Reset básico e fonte   
+/* ========================
+   Reset básico
 ======================== */
 * {
     box-sizing: border-box;
@@ -13,37 +9,38 @@
 
 /* Fonte moderna para todo o body */
 body { 
-    font-family: 'Montserrat', sans-serif; /* Alterado de Segoe UI para Montserrat */
+    font-family: 'Montserrat', sans-serif;
     background: linear-gradient(135deg, #5b2be0, #00c6ff);
-    min-height: 100vh; /* garante que cubra toda a altura */
+    min-height: 100vh;
     display: flex;
-    flex-direction: column; /* conteúdo */
+    flex-direction: column;
     color: #ccc;
 }
 
 /* ========================
-   Navbar topo (estilo botões separados)
+   Navbar topo (menu compacto)
 ======================== */
 .dashboard-menu {
     display: flex;
-    justify-content: space-around; /* ocupa toda a largura */
-    width: 100%; /* força a largura total da tela */
-    padding: 15px 0;
-    background-color: rgba(255, 255, 255, 0.95); /* fundo branco sem interferir no degradê */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* sombra leve */
+    justify-content: center; /* centraliza os botões */
+    gap: 8px; /* reduz espaço entre os botões */
+    width: 100%;
+    padding: 10px 0; /* menor padding vertical */
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
     flex-wrap: wrap;
 }
 
 .dashboard-menu .menu-btn {
-    padding: 10px 20px; /* um pouco maior para destaque */
+    padding: 6px 12px; /* reduz tamanho dos botões */
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 6px;
     background-color: transparent;
     color: #007bff;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1rem; /* aumenta o tamanho da fonte */
+    font-size: 0.9rem; /* fonte menor */
     transition: all 0.3s ease;
 }
 
@@ -105,13 +102,18 @@ body {
 .card-body {
     flex: 1;
     height: 300px; /* altura do gráfico dentro do card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-body canvas {
     width: 100% !important;
     height: 100% !important;
+    display: block; /* garante que o gráfico apareça */
 }
 
+/* Saldo */
 .saldo {
     font-size: 0.9rem;
     font-weight: bold;
@@ -120,6 +122,7 @@ body {
     padding: 4px 8px;
     border-radius: 5px;
 }
+
 /* ========================
    Responsividade
 ======================== */
