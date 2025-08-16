@@ -1,43 +1,97 @@
-// Dados de exemplo
-const meses = ["Janeiro","Fevereiro","Março","Abril","Maio"];
-const receitaData = [500, 700, 800, 600, 900];
-const despesaData = [300, 400, 500, 350, 450];
+// ========================
+// Dashboard Chart.js
+// ========================
 
-// Gráfico Receita
-new Chart(document.getElementById('graficoReceita'), {
-    type: 'bar',
-    data: {
-        labels: meses,
-        datasets: [{
-            label: 'Receita',
-            data: receitaData,
-            backgroundColor: 'rgba(5,3,107,0.8)',
-            borderColor: 'rgba(5,3,107,1)',
-            borderWidth: 1
-        }]
-    },
+// Dados de exemplo - você pode substituir pelos valores do backend
+const receitaData = {
+    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
+    datasets: [{
+        label: 'Receita',
+        data: [500, 700, 800, 600, 900],
+        backgroundColor: 'rgba(91, 43, 224, 0.6)',
+        borderColor: 'rgba(91, 43, 224, 1)',
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4
+    }]
+};
+
+const despesaData = {
+    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
+    datasets: [{
+        label: 'Despesa',
+        data: [300, 500, 400, 600, 700],
+        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4
+    }]
+};
+
+// Configuração do gráfico
+const configReceita = {
+    type: 'line',
+    data: receitaData,
     options: {
         responsive: true,
-        maintainAspectRatio: false,
-        scales: { y: { beginAtZero: true } }
+        plugins: {
+            legend: {
+                position: 'top',
+                labels: { color: '#333', font: { size: 14 } }
+            },
+            title: {
+                display: true,
+                text: 'Receita Mensal',
+                color: '#333',
+                font: { size: 18 }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { color: '#333' }
+            },
+            x: {
+                ticks: { color: '#333' }
+            }
+        }
     }
-});
+};
 
-// Gráfico Despesa
-new Chart(document.getElementById('graficoDespesa'), {
-    type: 'bar',
-    data: {
-        labels: meses,
-        datasets: [{
-            label: 'Despesa',
-            data: despesaData,
-            backgroundColor: 'rgba(245, 0, 0, 0.9)',
-            borderColor: 'rgba(245, 0, 0, 0.9)',
-        }]
-    },
+const configDespesa = {
+    type: 'line',
+    data: despesaData,
     options: {
         responsive: true,
-        maintainAspectRatio: false,
-        scales: { y: { beginAtZero: true } }
+        plugins: {
+            legend: {
+                position: 'top',
+                labels: { color: '#333', font: { size: 14 } }
+            },
+            title: {
+                display: true,
+                text: 'Despesa Mensal',
+                color: '#333',
+                font: { size: 18 }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { color: '#333' }
+            },
+            x: {
+                ticks: { color: '#333' }
+            }
+        }
     }
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+    const receitaCanvas = document.getElementById('receitaChart').getContext('2d');
+    new Chart(receitaCanvas, configReceita);
+
+    const despesaCanvas = document.getElementById('despesaChart').getContext('2d');
+    new Chart(despesaCanvas, configDespesa);
 });

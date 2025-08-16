@@ -1,198 +1,188 @@
-/* ======= ESTILO PADRÃO ======= */
-body {
-    background-color: #f5f6fa;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* ========================
+   Reset básico e fonte
+======================== */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-h1, h2, h3 {
-    font-weight: 600;
-    color: #333;
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #f4f6f8; /* Fundo claro */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Botões padrão */
-.btn-custom {
-    background-color: #4e73df;
-    color: white;
-    border-radius: 8px;
-    padding: 10px 18px;
-    border: none;
-    transition: all 0.2s ease-in-out;
-}
-.btn-custom:hover {
-    background-color: #2e59d9;
-    
+/* ========================
+   Menu principal (nav branco)
+======================== */
+nav {
+    background: #fff; /* Menu branco */
+    color: #333; /* Cor dos textos */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra leve */
+    border-radius: 0 0 12px 12px; /* Cantos inferiores arredondados */
+    position: sticky; /* Fica fixo ao rolar */
+    top: 0;
+    z-index: 1000;
 }
 
-/* ======= CONTAINER DE CARDS ======= */
-.card {
-    background: white;
+nav a {
+    color: #5b2be0; /* Links roxos para contraste */
+    text-decoration: none;
+    margin-left: 1rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    text-decoration: underline;
+    color: #0072ff;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5b2be0;
+}
+
+/* ========================
+   Container principal
+======================== */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+/* ========================
+   Card de receita/despesa/histórico/agendar
+======================== */
+.card-box {
+    background: #fff;
     border-radius: 12px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    flex: 1 1 250px; /* Flexível e responsivo */
+    min-width: 250px;
+    max-width: 350px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
 }
 
-/* Campos de formulário */
-.form-control {
+.card-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* ========================
+   Títulos de cards
+======================== */
+.card-box h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+/* ========================
+   Formulários dentro dos cards
+======================== */
+.card-box form input,
+.card-box form select {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    margin-bottom: 1rem;
     border-radius: 8px;
     border: 1px solid #ccc;
-    padding: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
 }
 
-/* ======= ADICIONAR RECEITA & DESPESA ======= */
-.transaction-form {
-    max-width: 600px;
-    margin: auto;
+.card-box form input:focus,
+.card-box form select:focus {
+    border-color: #5b2be0;
+    box-shadow: 0 0 5px rgba(91, 43, 224, 0.5);
 }
 
-.transaction-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.transaction-form .btn-custom {
+/* ========================
+   Botões dentro dos cards
+======================== */
+.card-box form button {
     width: 100%;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #5b2be0, #00c6ff);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* ======= HISTÓRICO ======= */
+.card-box form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ========================
+   Tabela de histórico
+======================== */
 .table-container {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-    padding: 20px;
+    width: 100%;
     overflow-x: auto;
+    margin-top: 1rem;
 }
 
-.table {
+.table-container table {
     width: 100%;
     border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
-.table thead {
-    background-color: #4e73df;
-    color: white;
-}
-.table th, .table td {
-    padding: 10px;
+
+.table-container th, 
+.table-container td {
+    padding: 0.8rem 1rem;
     text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-.table tr:hover {
-    background-color: #f1f1f1;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
 }
 
-/* ======= AGENDA ======= */
-.agenda-container {
-    max-width: 900px;
-    margin: auto;
+.table-container th {
+    background: #5b2be0;
+    color: #fff;
 }
 
-.agenda-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-    padding: 15px;
-    margin-bottom: 15px;
-}
-
-.agenda-card .date {
-    font-weight: bold;
-    color: #4e73df;
-}
-
-.agenda-card .actions button {
-    margin-left: 5px;
-}
-
-/* ======= RESPONSIVIDADE ======= */
+/* ========================
+   Responsividade
+======================== */
 @media (max-width: 768px) {
-    .agenda-card {
+    .container {
         flex-direction: column;
+        gap: 1rem;
+        margin: 1rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
         align-items: flex-start;
+        padding: 1rem;
     }
-    .agenda-card .actions {
-        margin-top: 10px;
-    }
-}
-/* Container do formulário */
-.form-card {
-    max-width: 500px;       /* largura máxima do card */
-    margin: 30px auto;      /* centraliza na tela */
-    padding: 20px 25px;     /* espaçamento interno menor */
-    background-color: #fff; /* fundo branco ou cor desejada */
-    border-radius: 12px;    /* cantos arredondados */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* sombra leve */
-}
 
-/* Inputs e selects */
-.form-card input,
-.form-card select {
-    padding: 8px 12px;      /* reduz altura dos campos */
-    font-size: 14px;        /* fonte menor */
-    border-radius: 6px;
-}
-
-/* Botão */
-.form-card button {
-    padding: 8px 16px;
-    font-size: 14px;
-    border-radius: 6px;
-}
-/* ======= NAVBAR PADRÃO ======= */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    padding: 12px 20px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-    border-radius: 12px;
-    margin: 20px auto;
-    max-width: 900px; /* mantém a largura igual aos cards */
-}
-
-.navbar-logo h2 {
-    margin: 0;
-    font-size: 20px;
-    color: #4e73df;
-}
-
-.navbar-menu {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar-menu li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: 0.2s;
-}
-
-.navbar-menu li a:hover {
-    background-color: #4e73df;
-    color: white;
-}
-
-/* RESPONSIVIDADE */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .navbar-menu {
-        flex-direction: column;
-        width: 100%;
-        gap: 8px;
-        margin-top: 10px;
+    .table-container table {
+        font-size: 0.85rem;
     }
 }

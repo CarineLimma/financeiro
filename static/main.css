@@ -1,0 +1,135 @@
+/* ========================
+   Reset básico e fonte
+======================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #00c6ff, #0072ff, #00ff99); /* Azul e verde */
+    overflow: hidden;
+    position: relative;
+}
+
+/* ========================
+   Fundo animado tipo gráfico
+======================== */
+body::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.05) 0,
+        rgba(255, 255, 255, 0.05) 1px,
+        transparent 1px,
+        transparent 10px
+    );
+    animation: moveBackground 10s linear infinite;
+    z-index: 0;
+}
+
+@keyframes moveBackground {
+    0% { transform: rotate(0deg) translate(0, 0); }
+    50% { transform: rotate(180deg) translate(50px, 50px); }
+    100% { transform: rotate(360deg) translate(0, 0); }
+}
+
+/* ========================
+   Container do card
+======================== */
+.card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    max-width: 90%;
+    z-index: 1; /* Sobre o fundo */
+    text-align: center;
+}
+
+/* ========================
+   Títulos
+======================== */
+.card h1, .card h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* ========================
+   Inputs
+======================== */
+.card input[type="text"],
+.card input[type="email"],
+.card input[type="password"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.card input:focus {
+    border-color: #00ff99;
+    box-shadow: 0 0 5px rgba(0, 255, 153, 0.5);
+}
+
+/* ========================
+   Botões
+======================== */
+.card button {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #0072ff, #00ff99);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ========================
+   Links
+======================== */
+.card a {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #0072ff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+/* ========================
+   Responsividade
+======================== */
+@media (max-width: 500px) {
+    .card {
+        padding: 1.5rem;
+        width: 90%;
+    }
+}
