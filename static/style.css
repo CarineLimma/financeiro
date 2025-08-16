@@ -9,7 +9,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: #f4f6f8; /* Fundo claro */
+    background: #f4f6f8;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -19,42 +19,62 @@ body {
    Menu principal (nav branco)
 ======================== */
 nav {
-    background: #fff; /* Menu branco */
-    color: #333; /* Cor dos textos */
+    background: #fff;
+    color: #333;
     padding: 1rem 2rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra leve */
-    border-radius: 0 0 12px 12px; /* Cantos inferiores arredondados */
-    position: sticky; /* Fica fixo ao rolar */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 0 0 12px 12px;
+    position: sticky;
     top: 0;
     z-index: 1000;
-}
-
-nav a {
-    color: #5b2be0; /* Links roxos para contraste */
-    text-decoration: none;
-    margin-left: 1rem;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    text-decoration: underline;
-    color: #0072ff;
 }
 
 nav .logo {
     font-size: 1.5rem;
     font-weight: bold;
     color: #5b2be0;
+    margin-right: 2rem;
+}
+
+nav .menu-links {
+    display: flex;
+    gap: 1rem;
+}
+
+nav a {
+    color: #5b2be0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #0072ff;
+    text-decoration: underline;
+}
+
+/* Botão Dashboard em azul claro */
+nav a.dashboard-btn {
+    background: linear-gradient(135deg, #6ec1ff, #00aaff);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a.dashboard-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    text-decoration: none;
 }
 
 /* ========================
-   Container principal
+   Container principal e formulário
 ======================== */
-.container {
+.container, .form-page {
     width: 90%;
     max-width: 1200px;
     margin: 2rem auto;
@@ -64,17 +84,31 @@ nav .logo {
     justify-content: center;
 }
 
+.form-page {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 2rem;
+}
+
+.form-page h2 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
 /* ========================
-   Card de receita/despesa/histórico/agendar
+   Card Box (formularios e cards)
 ======================== */
 .card-box {
     background: #fff;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 2rem;
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    flex: 1 1 250px; /* Flexível e responsivo */
-    min-width: 250px;
-    max-width: 350px;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
 }
@@ -84,9 +118,6 @@ nav .logo {
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* ========================
-   Títulos de cards
-======================== */
 .card-box h3 {
     margin-bottom: 1rem;
     color: #333;
@@ -94,12 +125,12 @@ nav .logo {
 }
 
 /* ========================
-   Formulários dentro dos cards
+   Inputs e selects dentro dos cards
 ======================== */
 .card-box form input,
 .card-box form select {
     width: 100%;
-    padding: 0.7rem 1rem;
+    padding: 0.8rem 1rem;
     margin-bottom: 1rem;
     border-radius: 8px;
     border: 1px solid #ccc;
@@ -111,7 +142,7 @@ nav .logo {
 .card-box form input:focus,
 .card-box form select:focus {
     border-color: #5b2be0;
-    box-shadow: 0 0 5px rgba(91, 43, 224, 0.5);
+    box-shadow: 0 0 5px rgba(91,43,224,0.5);
 }
 
 /* ========================
@@ -119,7 +150,7 @@ nav .logo {
 ======================== */
 .card-box form button {
     width: 100%;
-    padding: 0.7rem 1rem;
+    padding: 0.8rem 1rem;
     border: none;
     border-radius: 8px;
     background: linear-gradient(135deg, #5b2be0, #00c6ff);
@@ -132,6 +163,19 @@ nav .logo {
 .card-box form button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Links dentro do card-box */
+.card-box a {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #0072ff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.card-box a:hover {
+    text-decoration: underline;
 }
 
 /* ========================
@@ -166,10 +210,26 @@ nav .logo {
 }
 
 /* ========================
+   Dashboard gráficos
+======================== */
+.chart-container {
+    background: rgba(255,255,255,0.95);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    width: 100%;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 400px !important;
+}
+
+/* ========================
    Responsividade
 ======================== */
 @media (max-width: 768px) {
-    .container {
+    .container, .form-page {
         flex-direction: column;
         gap: 1rem;
         margin: 1rem;
@@ -182,7 +242,24 @@ nav .logo {
         padding: 1rem;
     }
 
+    nav .menu-links {
+        gap: 0.5rem;
+    }
+
     .table-container table {
         font-size: 0.85rem;
+    }
+
+    .form-page h2 {
+        font-size: 1.5rem;
+    }
+
+    .card-box {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .chart-container canvas {
+        height: 300px !important;
     }
 }

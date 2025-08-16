@@ -1,15 +1,12 @@
 // ========================
-// Dashboard Chart.js
-// ========================
-
-// Dados de exemplo - você pode substituir pelos valores do backend
+// Dados de exemplo
 const receitaData = {
     labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
     datasets: [{
         label: 'Receita',
         data: [500, 700, 800, 600, 900],
-        backgroundColor: 'rgba(91, 43, 224, 0.6)',
-        borderColor: 'rgba(91, 43, 224, 1)',
+        backgroundColor: 'rgba(19, 2, 117, 0.2)',
+        borderColor: 'rgba(19, 2, 117, 1)',
         borderWidth: 2,
         fill: true,
         tension: 0.4
@@ -21,20 +18,21 @@ const despesaData = {
     datasets: [{
         label: 'Despesa',
         data: [300, 500, 400, 600, 700],
-        backgroundColor: 'rgba(255, 99, 132, 0.6)',
-        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(204, 0, 0, 0.2)',
+        borderColor: 'rgba(204, 0, 0, 0.99)',
         borderWidth: 2,
         fill: true,
         tension: 0.4
     }]
 };
 
-// Configuração do gráfico
+// Configuração do gráfico Receita
 const configReceita = {
     type: 'line',
     data: receitaData,
     options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'top',
@@ -59,11 +57,13 @@ const configReceita = {
     }
 };
 
+// Configuração do gráfico Despesa
 const configDespesa = {
     type: 'line',
     data: despesaData,
     options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'top',
@@ -88,10 +88,12 @@ const configDespesa = {
     }
 };
 
+// ========================
+// Inicialização após carregar o DOM
 window.addEventListener('DOMContentLoaded', () => {
-    const receitaCanvas = document.getElementById('receitaChart').getContext('2d');
+    const receitaCanvas = document.getElementById('graficoReceita').getContext('2d');
     new Chart(receitaCanvas, configReceita);
 
-    const despesaCanvas = document.getElementById('despesaChart').getContext('2d');
+    const despesaCanvas = document.getElementById('graficoDespesa').getContext('2d');
     new Chart(despesaCanvas, configDespesa);
 });

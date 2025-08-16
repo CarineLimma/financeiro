@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #00c6ff, #0072ff, #00ff99); /* Azul e verde */
+    background: linear-gradient(135deg, #00c6ff, #0072ff, #00ff99);
     overflow: hidden;
     position: relative;
 }
@@ -46,34 +46,30 @@ body::before {
 }
 
 /* ========================
-   Container do card
+   Card Box para formulário
 ======================== */
-.card {
+.card-box {
     position: relative;
     background: rgba(255, 255, 255, 0.95);
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    width: 350px;
+    width: 400px;
     max-width: 90%;
     z-index: 1; /* Sobre o fundo */
     text-align: center;
 }
 
-/* ========================
-   Títulos
-======================== */
-.card h1, .card h2 {
+/* Títulos dentro do card-box */
+.card-box h1, .card-box h2 {
     color: #333;
     margin-bottom: 1.5rem;
 }
 
-/* ========================
-   Inputs
-======================== */
-.card input[type="text"],
-.card input[type="email"],
-.card input[type="password"] {
+/* Inputs dentro do card-box */
+.card-box input[type="text"],
+.card-box input[type="email"],
+.card-box input[type="password"] {
     width: 100%;
     padding: 0.8rem 1rem;
     margin-bottom: 1rem;
@@ -84,15 +80,13 @@ body::before {
     transition: 0.3s;
 }
 
-.card input:focus {
+.card-box input:focus {
     border-color: #00ff99;
     box-shadow: 0 0 5px rgba(0, 255, 153, 0.5);
 }
 
-/* ========================
-   Botões
-======================== */
-.card button {
+/* Botões dentro do card-box */
+.card-box button {
     width: 100%;
     padding: 0.8rem 1rem;
     border: none;
@@ -104,15 +98,13 @@ body::before {
     transition: 0.3s;
 }
 
-.card button:hover {
+.card-box button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
-/* ========================
-   Links
-======================== */
-.card a {
+/* Links dentro do card-box */
+.card-box a {
     display: inline-block;
     margin-top: 1rem;
     color: #0072ff;
@@ -120,15 +112,13 @@ body::before {
     transition: 0.3s;
 }
 
-.card a:hover {
+.card-box a:hover {
     text-decoration: underline;
 }
 
-/* ========================
-   Responsividade
-======================== */
+/* Responsividade do card-box */
 @media (max-width: 500px) {
-    .card {
+    .card-box {
         padding: 1.5rem;
         width: 90%;
     }

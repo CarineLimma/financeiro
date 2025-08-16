@@ -3,47 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Financeiro</title>
+    <title> Sistema Financeiro</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="dashboard-menu">
-    <a href="{{ url_for('dashboard') }}" class="menu-btn active">Dashboard</a>
-    <a href="{{ url_for('adicionar_receita') }}" class="menu-btn">Receita</a>
-    <a href="{{ url_for('adicionar_despesa') }}" class="menu-btn">Despesa</a>
-    <a href="{{ url_for('historico') }}" class="menu-btn">Histórico</a>
-    <a href="{{ url_for('agendar_transacao') }}" class="menu-btn">Agendar</a>
-    <a href="{{ url_for('logout') }}" class="menu-btn">Sair</a>
-  </nav>
-
-  <div class="cards-container">
-    <!-- Card Receita -->
-    <div class="card">
-        <div class="card-header">
-            <h3>Receita</h3>
-            <span class="saldo card-saldo"></span>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Painel Financeiro</div>
+        <div class="menu-links">
+            <a href="{{ url_for('dashboard') }}" class="menu-btn active">Dashboard</a>
+            <a href="{{ url_for('adicionar_receita') }}" class="menu-btn">Receita</a>
+            <a href="{{ url_for('adicionar_despesa') }}" class="menu-btn">Despesa</a>
+            <a href="{{ url_for('historico') }}" class="menu-btn">Histórico</a>
+            <a href="{{ url_for('agendar_transacao') }}" class="menu-btn">Agendar</a>
+            <a href="{{ url_for('logout') }}" class="menu-btn">Sair</a>
         </div>
-        <div class="card-body">
-            <canvas id="graficoReceita"></canvas>
+    </nav>
+
+    <!-- Container principal -->
+    <div class="dashboard-container">
+        <h2>Bem-vindo, {{ nome }}</h2>
+
+        <!-- Linha com saldo e gráficos -->
+        <div class="dashboard-row">
+            <!-- Card Saldo -->
+            <div class="card-box-saldo">
+                <h3>Total de Receitas</h3>
+                <p>R$ {{ "{:,.2f}".format(total_receitas) }}</p>
+            </div>
+            <div class="card-box-saldo">
+                <h3>Total de Despesas</h3>
+                <p>R$ {{ "{:,.2f}".format(total_despesas) }}</p>
+            </div>
+
+            <!-- Gráfico Receita -->
+            <div class="chart-container">
+                <canvas id="graficoReceita"></canvas>
+            </div>
+
+            <!-- Gráfico Despesa -->
+            <div class="chart-container">
+                <canvas id="graficoDespesa"></canvas>
+            </div>
         </div>
     </div>
 
-    <!-- Card Despesa -->
-    <div class="card">
-        <div class="card-header">
-            <h3>Despesa</h3>
-            <span class="saldo card-saldo"></span>
-        </div>
-        <div class="card-body">
-            <canvas id="graficoDespesa"></canvas>
-        </div>
-    </div>
-</div>
+    <!-- JS Dinâmico do Chart.js -->
+    <script>
+        // Dados do Flask
+        const labels = {{ labels_meses | tojson }};
+        const dataReceita = {{ valores_receitas | tojson }};
+        const dataDespesa = {{ valores_despesas | tojson }};
 
+        // Configuração Receita
+        const configReceita = {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Receita',
+                    data: dataReceita,
+                    backgroundColor: 'rgba(19, 2, 117, 0.2)',
+                    borderColor: 'rgba(19, 2, 117, 1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top', labels: { color: '#333', font: { size: 14 } } },
+                    title: { display: true, text: 'Receita Mensal', color: '#333', font: { size: 18 } }
+                },
+                scales: {
+                    y: { beginAtZero: true, ticks: { color: '#333' } },
+                    x: { ticks: { color: '#333' } }
+                }
+            }
+        };
 
-    <!-- JS dos gráficos -->
-    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+        // Configuração Despesa
+        const configDespesa = {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Despesa',
+                    data: dataDespesa,
+                    backgroundColor: 'rgba(204, 0, 0, 0.2)',
+                    borderColor: 'rgba(204, 0, 0, 0.99)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top', labels: { color: '#333', font: { size: 14 } } },
+                    title: { display: true, text: 'Despesa Mensal', color: '#333', font: { size: 18 } }
+                },
+                scales: {
+                    y: { beginAtZero: true, ticks: { color: '#333' } },
+                    x: { ticks: { color: '#333' } }
+                }
+            }
+        };
+
+        // Inicializa gráficos após carregar a página
+        window.addEventListener('DOMContentLoaded', () => {
+            const receitaCanvas = document.getElementById('graficoReceita').getContext('2d');
+            new Chart(receitaCanvas, configReceita);
+
+            const despesaCanvas = document.getElementById('graficoDespesa').getContext('2d');
+            new Chart(despesaCanvas, configDespesa);
+        });
+    </script>
 </body>
 </html>
