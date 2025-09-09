@@ -1,72 +1,73 @@
-Sistema de Controle Financeiro Pessoal e Empresarial
+ ## Sistema de Controle Financeiro Pessoal e Empresarial
 
 Um sistema completo de controle financeiro desenvolvido em Flask, com interface web moderna, responsiva e fácil de usar. Permite gerenciar receitas, despesas, histórico de transações, dashboard com gráficos, exportação de dados e mais.
 
-📝 Funcionalidades
-Autenticação e Usuários
+## 📝 Funcionalidades
 
-Registro de novos usuários.
+- Autenticação e Usuários
 
-Login seguro com verificação de senha.
+- Registro de novos usuários.
 
-Recuperação de senha via e-mail com token temporário.
+- Login seguro com verificação de senha.
 
-Transações Financeiras
+- Recuperação de senha via e-mail com token temporário.
 
-Cadastro de receitas e despesas.
+- Transações Financeiras
 
-Suporte a transações recorrentes (mensais, semanais, etc.).
+- Cadastro de receitas e despesas.
 
-Histórico completo de transações com filtros por data, tipo e categoria.
+- Suporte a transações recorrentes (mensais, semanais, etc.).
 
-Dashboard
+- Histórico completo de transações com filtros por data, tipo e categoria.
 
-Visualização de saldo atual.
+- Dashboard
 
-Gráficos interativos (barras) mostrando receitas e despesas.
+-Visualização de saldo atual.
 
-Layout responsivo, com gráficos lado a lado em telas grandes e empilhados em telas pequenas.
+- Gráficos interativos (barras) mostrando receitas e despesas.
 
-Exportação de Dados
+- Layout responsivo, com gráficos lado a lado em telas grandes e empilhados em telas pequenas.
 
-Exportar transações para PDF ou Excel.
+- Exportação de Dados
 
-Ideal para relatórios financeiros pessoais ou empresariais.
+- Exportar transações para PDF ou Excel.
 
-Integração e Estrutura
+- Ideal para relatórios financeiros pessoais ou empresariais.
 
-Banco de dados SQLite (database.db).
+- Integração e Estrutura
 
-Tabelas:
+- Banco de dados SQLite (database.db).
 
-usuarios: informações dos usuários (id, email, senha, nome…).
+## Tabelas:
 
-transacoes: informações das transações (id, tipo, valor, categoria, data, usuário…).
+- usuarios: informações dos usuários (id, email, senha, nome…).
 
-Suporte para múltiplos usuários, cada um com suas próprias transações.
+- transacoes: informações das transações (id, tipo, valor, categoria, data, usuário…).
 
-Layout e Estilo
+- Suporte para múltiplos usuários, cada um com suas próprias transações.
 
-Interface moderna e responsiva usando Bootstrap e CSS customizado.
+- Layout e Estilo
 
-Menu de navegação fixo no topo com links para Dashboard, Receita, Despesa, Histórico, Agendar Transação e Sair.
+- Interface moderna e responsiva usando Bootstrap e CSS customizado.
 
-Cards limpos e minimalistas para visualização de dados.
+- Menu de navegação fixo no topo com links para Dashboard, Receita, Despesa, Histórico, Agendar Transação e Sair.
 
-🛠️ Tecnologias Utilizadas
+- Cards limpos e minimalistas para visualização de dados.
 
-Python 3.x
+## 🛠️ Tecnologias Utilizadas
 
-Flask
+- Python 3.x
 
-Flask-Mail (para envio de e-mails de recuperação de senha)
+- Flask
 
-SQLite (banco de dados)
+- Flask-Mail (para envio de e-mails de recuperação de senha)
 
-Bootstrap 5
+- SQLite (banco de dados)
 
-Chart.js (gráficos)
+- Bootstrap 5
 
-HTML5, CSS3, JavaScript
+- Chart.js (gráficos)
+
+- HTML5, CSS3, JavaScript
 
 Jinja2 (templates)
