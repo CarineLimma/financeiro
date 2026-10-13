@@ -1,73 +1,126 @@
- ## 🧮 Sistema de Controle Financeiro Pessoal e Empresarial
+# 💰 Sistema de Controle Financeiro Pessoal e Empresarial
 
-Um sistema completo de controle financeiro desenvolvido em Flask, com interface web moderna, responsiva e fácil de usar. Permite gerenciar receitas, despesas, histórico de transações, dashboard com gráficos, exportação de dados e mais.
-<strong> Saiba mais:</strong> https://financeiro-5tia.onrender.com/login
-## 📝 Funcionalidades
+### Aplicação Web Full Stack | Python • Flask • SQLite • JavaScript
 
-- Autenticação e Usuários
+Sistema web desenvolvido para facilitar o gerenciamento financeiro pessoal e empresarial, permitindo acompanhar receitas, despesas, transações recorrentes e relatórios por meio de uma interface intuitiva e responsiva.
 
-- Registro de novos usuários.
+O projeto integra funcionalidades de autenticação, gerenciamento de dados financeiros, visualização gráfica e exportação de relatórios, proporcionando uma experiência prática para o controle das finanças.
 
-- Login seguro com verificação de senha.
+🔗 **[Acessar aplicação online](https://financeiro-5tia.onrender.com/login)**
 
-- Recuperação de senha via e-mail com token temporário.
+---
 
-- Transações Financeiras
+## 🎯 Objetivo do projeto
 
+Desenvolver uma solução digital que permita aos usuários organizar suas finanças, acompanhar movimentações e visualizar informações importantes para a tomada de decisões.
+
+O sistema foi desenvolvido utilizando Python e Flask no backend, SQLite para persistência de dados e tecnologias web para construção da interface.
+
+## 🚀 Funcionalidades
+
+### 🔐 Autenticação e gerenciamento de usuários
+- Cadastro de novos usuários.
+- Login com verificação de senha.
+- Recuperação de senha por e-mail utilizando token temporário.
+- Gerenciamento individualizado das transações de cada usuário.
+
+### 💳 Controle financeiro
 - Cadastro de receitas e despesas.
+- Organização das transações por categorias.
+- Registro de transações recorrentes.
+- Consulta ao histórico financeiro.
+- Filtros por data, tipo e categoria.
 
-- Suporte a transações recorrentes (mensais, semanais, etc.).
+### 📊 Dashboard financeiro
+- Visualização do saldo atual.
+- Gráficos interativos de receitas e despesas.
+- Organização visual das informações financeiras.
+- Interface adaptada para computadores, tablets e smartphones.
 
-- Histórico completo de transações com filtros por data, tipo e categoria.
+### 📁 Relatórios e exportação
+- Exportação de transações para PDF.
+- Exportação de dados para Excel.
+- Geração de informações para acompanhamento financeiro pessoal e empresarial.
 
-- Dashboard
+## 🛠️ Tecnologias utilizadas
 
--Visualização de saldo atual.
+| Categoria | Tecnologias |
+|---|---|
+| Backend | Python 3, Flask |
+| Frontend | HTML5, CSS3, JavaScript |
+| Interface | Bootstrap 5 |
+| Banco de dados | SQLite |
+| Templates | Jinja2 |
+| Gráficos | Chart.js |
+| E-mail | Flask-Mail |
 
-- Gráficos interativos (barras) mostrando receitas e despesas.
+## 🗄️ Banco de dados
 
-- Layout responsivo, com gráficos lado a lado em telas grandes e empilhados em telas pequenas.
+O projeto utiliza SQLite para armazenamento e gerenciamento das informações.
 
-- Exportação de Dados
+**Principais tabelas:**
 
-- Exportar transações para PDF ou Excel.
+**Usuários (`usuarios`)**
+- Identificador do usuário.
+- Nome.
+- E-mail.
+- Dados de autenticação.
 
-- Ideal para relatórios financeiros pessoais ou empresariais.
+**Transações (`transacoes`)**
+- Identificador da transação.
+- Tipo de movimentação.
+- Valor.
+- Categoria.
+- Data.
+- Identificação do usuário responsável.
 
-- Integração e Estrutura
+A aplicação permite que diferentes usuários gerenciem seus próprios registros financeiros.
 
-- Banco de dados SQLite (database.db).
+## 🎨 Interface e experiência do usuário
 
-## Tabelas:
+A interface foi desenvolvida com foco em usabilidade, organização visual e responsividade.
 
-- usuarios: informações dos usuários (id, email, senha, nome…).
+**Características principais:**
+- Layout moderno e minimalista.
+- Navegação simplificada.
+- Cards para apresentação de informações.
+- Gráficos interativos.
+- Adaptação a diferentes tamanhos de tela.
+- Menu de acesso às principais funcionalidades.
 
-- transacoes: informações das transações (id, tipo, valor, categoria, data, usuário…).
+## 🧠 Competências técnicas demonstradas
 
-- Suporte para múltiplos usuários, cada um com suas próprias transações.
+O desenvolvimento deste projeto envolve conhecimentos e práticas relacionados a:
 
-- Layout e Estilo
+- Desenvolvimento web Full Stack.
+- Construção de aplicações com Flask.
+- Integração entre frontend e backend.
+- Manipulação e persistência de dados.
+- Implementação de autenticação de usuários.
+- Desenvolvimento de interfaces responsivas.
+- Visualização de dados com gráficos.
+- Implementação de funcionalidades de exportação.
+- Organização de rotas, templates e funcionalidades da aplicação.
 
-- Interface moderna e responsiva usando Bootstrap e CSS customizado.
+## 🌐 Demonstração
 
-- Menu de navegação fixo no topo com links para Dashboard, Receita, Despesa, Histórico, Agendar Transação e Sair.
+A aplicação está disponível para acesso online:
 
-- Cards limpos e minimalistas para visualização de dados.
+**[Acessar Sistema de Controle Financeiro](https://financeiro-5tia.onrender.com/login)**
 
-## 🛠️ Tecnologias Utilizadas
+## 👩‍💻 Desenvolvedora
 
-- Python 3.x
+**Carine Lima**
 
-- Flask
+Estudante de Engenharia de Software | Desenvolvedora Full Stack
 
-- Flask-Mail (para envio de e-mails de recuperação de senha)
+Apaixonada por tecnologia, desenvolvimento de sistemas e criação de soluções digitais que transformam necessidades reais em aplicações funcionais.
 
-- SQLite (banco de dados)
+**GitHub:** [github.com/CarineLimma](https://github.com/CarineLimma)
 
-- Bootstrap 5
+**Portfólio:** [carinelimadev.netlify.app](https://carinelimadev.netlify.app)
 
-- Chart.js (gráficos)
+---
 
-- HTML5, CSS3, JavaScript
+⭐ Se este projeto foi útil ou despertou seu interesse, considere deixar uma estrela no repositório!
 
-Jinja2 (templates)
